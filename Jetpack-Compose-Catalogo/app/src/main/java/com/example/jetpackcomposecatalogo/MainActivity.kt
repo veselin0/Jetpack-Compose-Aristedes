@@ -1,6 +1,7 @@
 package com.example.jetpackcomposecatalogo
 
 import android.os.Bundle
+import android.widget.Spinner
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -17,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.jetpackcomposecatalogo.ui.theme.JetpackComposeCatalogoTheme
 
 class MainActivity : ComponentActivity() {
@@ -47,7 +49,7 @@ fun MyComplexLayout() {
         ) {
             Text(text = "Employee 1")
         }
-
+        MySpacer(size = 30)
         Row(
             Modifier
                 .fillMaxWidth()
@@ -71,7 +73,7 @@ fun MyComplexLayout() {
                 Text(text = "Employee 3")
             }
         }
-
+        MySpacer(size = 80)
         Box(
             Modifier
                 .fillMaxWidth()
@@ -81,6 +83,11 @@ fun MyComplexLayout() {
             Text(text = "Employee 4")
         }
     }
+}
+
+@Composable
+fun MySpacer(size: Int) {
+    Spacer(modifier = Modifier.height(size.dp))
 }
 
 @Composable
