@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -51,13 +52,19 @@ fun DefaultPreview() {
 
 @Composable
 fun MyButtonExample() {
+
+    var enabled by rememberSaveable() {
+        mutableStateOf(true)
+    }
+
     Column(
         Modifier
             .fillMaxSize()
             .padding(24.dp)
     ) {
         Button(
-            onClick = { Log.i("Gocho", "This is an example") },
+            onClick = { enabled = false },
+            enabled = enabled,
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Magenta,
                 contentColor = Color.Blue
