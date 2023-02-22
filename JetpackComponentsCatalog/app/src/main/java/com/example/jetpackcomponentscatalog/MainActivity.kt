@@ -71,7 +71,21 @@ fun MyButtonExample() {
             ),
             border = BorderStroke(5.dp, Color.Green)
         ) {
-            Text(text = "Hi")
+            Text(text = "Hello")
+        }
+
+        OutlinedButton(
+            onClick = { enabled = false },
+            enabled = enabled,
+            modifier = Modifier.padding(top = 8.dp),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Magenta,
+                contentColor = Color.Blue,
+                disabledBackgroundColor = Color.Blue,
+                disabledContentColor = Color.Red
+            ),
+        ) {
+            Text(text = "Hello")
         }
     }
 }
