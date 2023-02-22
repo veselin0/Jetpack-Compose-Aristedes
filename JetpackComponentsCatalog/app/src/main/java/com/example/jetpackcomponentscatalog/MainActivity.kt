@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Column {
-                        MyProgressBarrAdvanced()
+                        MySwitch()
                     }
 
                 }
@@ -51,8 +51,33 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     JetpackComponentsCatalogTheme {
-        MyProgressBarrAdvanced()
+        MySwitch()
     }
+}
+
+@Composable
+fun MySwitch() {
+    var state by rememberSaveable {
+        mutableStateOf(false)
+    }
+
+    Switch(
+        checked = state,
+        onCheckedChange = { state = !state },
+        enabled = false,
+        colors = SwitchDefaults.colors(
+            uncheckedThumbColor = Color.Red,
+            checkedThumbColor = Color.Green,
+            uncheckedTrackColor = Color.Magenta,
+            checkedTrackColor = Color.Cyan,
+            checkedTrackAlpha = 0.1f,
+            uncheckedTrackAlpha = 0.1f,
+            disabledCheckedTrackColor = Color.Yellow,
+            disabledCheckedThumbColor = Color.Yellow,
+            disabledUncheckedTrackColor = Color.Yellow,
+            disabledUncheckedThumbColor = Color.Yellow
+        )
+    )
 }
 
 @Composable
@@ -66,7 +91,7 @@ fun MyProgressBarrAdvanced() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         CircularProgressIndicator(progress = progressStatus)
-        
+
         Row(Modifier.fillMaxWidth()) {
             Button(onClick = { progressStatus += 0.1f }) {
                 Text(text = "Increment")
