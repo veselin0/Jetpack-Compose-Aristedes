@@ -1,7 +1,6 @@
 package com.example.jetpackcomponentscatalog
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -11,8 +10,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Column {
-                        MyImageAdvanced()
+                        MyIcon()
                     }
 
                 }
@@ -52,8 +52,27 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     JetpackComponentsCatalogTheme {
-        MyImageAdvanced()
+        MyIcon()
     }
+}
+
+@Composable
+fun MyIcon() {
+    Icon(
+        imageVector = Icons.Rounded.Star,
+        contentDescription = "Icon",
+        tint = Color.Red
+    )
+// implementation "androidx.compose.material:material-icons-extended:1.3.1"
+//    This library is too large: don't use if not needed
+
+//    Icon(
+//        painter = painterResource(id = R.drawable.baseline_star_half_24),
+//        contentDescription = null,
+//        tint = Color.Green,
+//        modifier = Modifier.size(80.dp)
+//
+//    )
 }
 
 @Composable
