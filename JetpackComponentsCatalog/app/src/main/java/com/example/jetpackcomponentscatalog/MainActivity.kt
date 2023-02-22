@@ -1,8 +1,10 @@
 package com.example.jetpackcomponentscatalog
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -29,8 +31,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    var myText by remember { mutableStateOf("Gocho") }
-                    MyTextField(myText) { myText = it }
+                    Column {
+                        MyButtonExample()
+                    }
 
                 }
             }
@@ -42,7 +45,27 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     JetpackComponentsCatalogTheme {
-        MyTextFieldOutlined()
+        MyButtonExample()
+    }
+}
+
+@Composable
+fun MyButtonExample() {
+    Column(
+        Modifier
+            .fillMaxSize()
+            .padding(24.dp)
+    ) {
+        Button(
+            onClick = { Log.i("Gocho", "This is an example") },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Magenta,
+                contentColor = Color.Blue
+            ),
+            border = BorderStroke(5.dp, Color.Green)
+        ) {
+            Text(text = "Hi")
+        }
     }
 }
 
@@ -79,7 +102,7 @@ fun MyTextFieldAdvanced() {
 }
 
 @Composable
-fun MyTextField(name: String, onValueChanged:(String) -> Unit) {
+fun MyTextField(name: String, onValueChanged: (String) -> Unit) {
 
     TextField(value = name, onValueChange = { onValueChanged(it) })
 }
