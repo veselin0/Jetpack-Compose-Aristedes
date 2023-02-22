@@ -8,10 +8,13 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,10 +32,27 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    MyComplexLayout()
+                    MyStateExample()
                 }
             }
         }
+    }
+}
+
+@Composable
+fun MyStateExample() {
+
+    val counter = remember { mutableStateOf(0) }
+
+    Column(
+        Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(onClick = { counter.value++ }) {
+            Text(text = "Click me!")
+        }
+        Text(text = "I have been clicked ${counter.value} times")
     }
 }
 
@@ -166,6 +186,6 @@ fun MyBox() {
 @Composable
 fun DefaultPreview() {
     JetpackComposeCatalogoTheme {
-        MyComplexLayout()
+        MyStateExample()
     }
 }
