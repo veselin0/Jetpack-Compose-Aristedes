@@ -6,10 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -41,7 +38,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Column {
-                        MyProgressBar()
+                        MyProgressBarrAdvanced()
                     }
 
                 }
@@ -54,12 +51,51 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     JetpackComponentsCatalogTheme {
-        MyProgressBar()
+        MyProgressBarrAdvanced()
+    }
+}
+
+@Composable
+fun MyProgressBarrAdvanced() {
+
+    var progressStatus by rememberSaveable { mutableStateOf(0f) }
+
+    Column(
+        Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        CircularProgressIndicator(progress = progressStatus)
+        
+        Row(Modifier.fillMaxWidth()) {
+            Button(onClick = { progressStatus += 0.1f }) {
+                Text(text = "Increment")
+            }
+
+            Button(onClick = { progressStatus -= 0.1f }) {
+                Text(text = "Reduce")
+            }
+        }
+
+        LinearProgressIndicator(progress = progressStatus)
+
+        Row(Modifier.fillMaxWidth()) {
+            Button(onClick = { progressStatus += 0.1f }) {
+                Text(text = "Increment")
+            }
+
+            Button(onClick = { progressStatus -= 0.1f }) {
+                Text(text = "Reduce")
+            }
+        }
     }
 }
 
 @Composable
 fun MyProgressBar() {
+
+    var showLoading by rememberSaveable { mutableStateOf(false) }
+
     Column(
         Modifier
             .padding(24.dp)
@@ -67,12 +103,17 @@ fun MyProgressBar() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        CircularProgressIndicator(color = Color.Red, strokeWidth = 10.dp)
-        LinearProgressIndicator(
-            modifier = Modifier.padding(top = 32.dp),
-            color = Color.Red,
-            backgroundColor = Color.Green
-        )
+        if (showLoading) {
+            CircularProgressIndicator(color = Color.Red, strokeWidth = 10.dp)
+            LinearProgressIndicator(
+                modifier = Modifier.padding(top = 32.dp),
+                color = Color.Red,
+                backgroundColor = Color.Green
+            )
+        }
+        Button(onClick = { showLoading = !showLoading }) {
+            Text(text = "Load Profile")
+        }
     }
 }
 
