@@ -39,20 +39,12 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 
-                    var status by rememberSaveable {
-                        mutableStateOf(false)
-                    }
-
-                    val checkInfo = CheckInfo(
-                        title = "This is the good one!",
-                        selected = status,
-                        onCheckedChange = { myNewStatus -> status = myNewStatus }
-                    )
+                    val myOptions = getOptions(listOf("Gocho", "Bocho", "Docho"))
 
                     Column() {
-                        MyCheckboxWithTextCompleted(checkInfo)
-                        MyCheckboxWithText()
-
+                        myOptions.forEach {
+                            MyCheckboxWithTextCompleted(it)
+                        }
                     }
                 }
             }
@@ -65,6 +57,21 @@ class MainActivity : ComponentActivity() {
 fun DefaultPreview() {
     JetpackComponentsCatalogTheme {
         MyCheckboxWithText()
+    }
+}
+
+@Composable
+fun getOptions(titles: List<String>): List<CheckInfo> {
+    return titles.map {
+        var status by rememberSaveable {
+            mutableStateOf(false)
+        }
+        CheckInfo(
+            title = it,
+            selected = status,
+//                        onCheckedChange = { status = it } // it is the iterator (the Boolean from CheckInfo)
+            onCheckedChange = { myNewStatus -> status = myNewStatus } // another way to do the same
+        )
     }
 }
 
