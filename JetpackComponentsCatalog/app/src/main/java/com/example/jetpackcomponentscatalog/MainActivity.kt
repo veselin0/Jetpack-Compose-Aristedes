@@ -25,7 +25,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.jetpackcomponentscatalog.ui.theme.JetpackComponentsCatalogTheme
+import com.example.jetpackcomponentscatalog.ui.ui.CheckInfo
+import com.example.jetpackcomponentscatalog.ui.ui.JetpackComponentsCatalogTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +38,21 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+
+                    var status by rememberSaveable {
+                        mutableStateOf(false)
+                    }
+
+                    val checkInfo = CheckInfo(
+                        title = "This is the good one!",
+                        selected = status,
+                        onCheckedChange = { myNewStatus -> status = myNewStatus }
+                    )
+
                     Column() {
+                        MyCheckboxWithTextCompleted(checkInfo)
                         MyCheckboxWithText()
+
                     }
                 }
             }
@@ -55,6 +69,22 @@ fun DefaultPreview() {
 }
 
 @Composable
+fun MyCheckboxWithTextCompleted(checkInfo: CheckInfo) {
+
+    Row(Modifier.padding(8.dp)) {
+        Checkbox(
+            checked = checkInfo.selected,
+            onCheckedChange = { checkInfo.onCheckedChange(!checkInfo.selected) })
+        Spacer(modifier = Modifier.width(4.dp))
+        Text(
+            text = checkInfo.title,
+            modifier = Modifier.padding(top = 12.dp)
+        )
+    }
+}
+
+
+@Composable
 fun MyCheckboxWithText() {
 
     var state by rememberSaveable {
@@ -63,8 +93,11 @@ fun MyCheckboxWithText() {
 
     Row(Modifier.padding(8.dp)) {
         Checkbox(checked = state, onCheckedChange = { state = !state })
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(text = "Employee 1")
+        Spacer(modifier = Modifier.width(4.dp))
+        Text(
+            text = "Employee 1",
+            modifier = Modifier.padding(top = 12.dp)
+        )
     }
 }
 
