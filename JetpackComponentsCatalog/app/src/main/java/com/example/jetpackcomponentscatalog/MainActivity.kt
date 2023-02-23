@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Column {
-                        MySwitch()
+                        MyCheckbox()
                     }
 
                 }
@@ -51,8 +51,26 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     JetpackComponentsCatalogTheme {
-        MySwitch()
+        MyCheckbox()
     }
+}
+
+@Composable
+fun MyCheckbox() {
+    var state by rememberSaveable {
+        mutableStateOf(false)
+    }
+
+    Checkbox(
+        checked = state,
+        onCheckedChange = { state = !state },
+        enabled = true,
+        colors = CheckboxDefaults.colors(
+            checkedColor = Color.Red,
+            uncheckedColor = Color.Green,
+            checkmarkColor = Color.Blue
+        )
+    )
 }
 
 @Composable
