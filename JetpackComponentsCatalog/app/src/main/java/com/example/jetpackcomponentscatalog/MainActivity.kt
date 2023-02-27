@@ -40,7 +40,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JetpackComponentsCatalogTheme {
-                MyBadgeBox()
+                Column() {
+                    MyDivider()
+                }
+                MyDivider()
             }
         }
     }
@@ -51,8 +54,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     JetpackComponentsCatalogTheme {
-        MyBadgeBox()
+        MyDivider()
     }
+}
+
+@Composable
+fun MyDivider() {
+    Divider(Modifier.fillMaxWidth().padding(16.dp), color = Color.Red)
 }
 
 @Composable
@@ -81,6 +89,7 @@ fun MyBadgeBox() {
             onClick = {}
         )
     }
+
     @Composable
     fun MyCard() {
         Card(
