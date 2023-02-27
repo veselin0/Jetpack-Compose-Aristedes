@@ -21,12 +21,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MultipleStatesHoistingTheme {
-                val myOptions = getOptions(listOf("Gocho", "Bocho", "Mocho") )
-                    Column() {
-                        myOptions.forEach {
-                            MyCheckboxWithTextComplete(it)
-                        }
+                val myOptions = getOptions(listOf("Gocho", "Bocho", "Mocho"))
+                Column() {
+                    myOptions.forEach {
+                        MyCheckboxWithTextComplete(it)
                     }
+                }
             }
         }
     }
