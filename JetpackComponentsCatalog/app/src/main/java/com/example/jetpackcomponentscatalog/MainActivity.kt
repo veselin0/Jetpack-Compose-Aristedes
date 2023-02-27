@@ -40,19 +40,17 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 
-                    val myOptions = getOptions(listOf("Gocho", "Bocho", "Docho"))
+//                    val myOptions = getOptions(listOf("Gocho", "Bocho", "Docho"))
 
-                    Column() {
-                        MyTriStatusCheckBox()
-                        myOptions.forEach {
-                            MyCheckboxWithTextCompleted(it)
-                        }
+                    Column {
+                        MyRadioButton()
                     }
                 }
             }
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
@@ -63,12 +61,31 @@ fun DefaultPreview() {
 }
 
 @Composable
+fun MyRadioButton() {
+    Row(Modifier.fillMaxSize()) {
+        RadioButton(
+            selected = false,
+            onClick = { /*TODO*/ },
+            enabled = false,
+            colors = RadioButtonDefaults.colors(
+                selectedColor = Color.Red,
+                unselectedColor = Color.Yellow,
+                disabledColor = Color.Green
+
+            )
+        )
+        Text(text = "Gocho 1")
+    }
+
+}
+
+@Composable
 fun MyTriStatusCheckBox() {
     var status by rememberSaveable {
         mutableStateOf(ToggleableState.Off)
     }
     TriStateCheckbox(state = status, onClick = {
-        status = when(status) {
+        status = when (status) {
             ToggleableState.On -> ToggleableState.Off
             ToggleableState.Off -> ToggleableState.Indeterminate
             ToggleableState.Indeterminate -> ToggleableState.On
