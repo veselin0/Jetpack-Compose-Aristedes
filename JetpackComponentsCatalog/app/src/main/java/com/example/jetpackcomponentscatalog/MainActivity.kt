@@ -35,6 +35,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetpackComponentsCatalogTheme {
                 // A surface container using the 'background' color from the theme
+                var selected by rememberSaveable {
+                    mutableStateOf("Gocho")
+                }
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
@@ -43,7 +47,7 @@ class MainActivity : ComponentActivity() {
 //                    val myOptions = getOptions(listOf("Gocho", "Bocho", "Docho"))
 
                     Column {
-                        MyRadioButton()
+                        MyRadioButtonList(selected) { selected = it }
                     }
                 }
             }
@@ -57,6 +61,41 @@ class MainActivity : ComponentActivity() {
 fun DefaultPreview() {
     JetpackComponentsCatalogTheme {
         MyCheckboxWithText()
+    }
+}
+
+@Composable
+fun MyRadioButtonList(name: String, onItemSelected: (String) -> Unit) {
+
+    Column(Modifier.fillMaxWidth()) {
+        Row() {
+            RadioButton(
+                selected = name == "Gocho",
+                onClick = { onItemSelected("Gocho") },
+            )
+            Text(text = "Gocho")
+        }
+        Row() {
+            RadioButton(
+                selected = name == "Bocho",
+                onClick = { onItemSelected("Bocho") },
+            )
+            Text(text = "Bocho")
+        }
+        Row() {
+            RadioButton(
+                selected = name == "Docho",
+                onClick = { onItemSelected("Docho") },
+            )
+            Text(text = "Docho")
+        }
+        Row() {
+            RadioButton(
+                selected = name == "Mocho",
+                onClick = { onItemSelected("Mocho") },
+            )
+            Text(text = "Mocho")
+        }
     }
 }
 
