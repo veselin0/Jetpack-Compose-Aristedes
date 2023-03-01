@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetpackComponentsCatalogTheme {
                 Column {
-                    MyDropdownMenu()
+                    BasicSlider()
                 }
 
             }
