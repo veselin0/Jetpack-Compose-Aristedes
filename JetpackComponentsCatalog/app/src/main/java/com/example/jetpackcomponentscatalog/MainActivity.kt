@@ -1,6 +1,7 @@
 package com.example.jetpackcomponentscatalog
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
@@ -38,8 +39,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JetpackComponentsCatalogTheme {
-                Column {
-                    MyRangeSlider()
+                var show by remember { mutableStateOf(false) }
+                Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    Button(onClick = { show = true }) {
+                        Text(text = "Mostrar diálogo")
+                    }
+                    MyDialog(
+                        show = show,
+                        onDismiss = { show = false },
+                        onConfirm = {
+                            Log.i("Gocho!", "Click!")
+                            show = false
+                        }
+                    )
                 }
 
             }
