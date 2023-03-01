@@ -33,12 +33,13 @@ import com.example.jetpackcomponentscatalog.ui.ui.CheckInfo
 import com.example.jetpackcomponentscatalog.ui.ui.JetpackComponentsCatalogTheme
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             JetpackComponentsCatalogTheme {
                 Column {
-                    AdvancedSlider()
+                    MyRangeSlider()
                 }
 
             }
