@@ -44,14 +44,11 @@ class MainActivity : ComponentActivity() {
                     Button(onClick = { show = true }) {
                         Text(text = "Mostrar diálogo")
                     }
-                    MyDialog(
+                    MySimpleCustomDialog(
                         show = show,
                         onDismiss = { show = false },
-                        onConfirm = {
-                            Log.i("Gocho!", "Click!")
-                            show = false
-                        }
-                    )
+
+                        )
                 }
 
             }
