@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
                     Button(onClick = { show = true }) {
                         Text(text = "Mostrar diálogo")
                     }
-                    MyCustomDialog(
+                    MyConfirmationDialog(
                         show = show,
                         onDismiss = { show = false },
 
@@ -158,40 +158,7 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        @Composable
-        fun MyRadioButtonList(name: String, onItemSelected: (String) -> Unit) {
 
-            Column(Modifier.fillMaxWidth()) {
-                Row() {
-                    RadioButton(
-                        selected = name == "Gocho",
-                        onClick = { onItemSelected("Gocho") },
-                    )
-                    Text(text = "Gocho")
-                }
-                Row() {
-                    RadioButton(
-                        selected = name == "Bocho",
-                        onClick = { onItemSelected("Bocho") },
-                    )
-                    Text(text = "Bocho")
-                }
-                Row() {
-                    RadioButton(
-                        selected = name == "Docho",
-                        onClick = { onItemSelected("Docho") },
-                    )
-                    Text(text = "Docho")
-                }
-                Row() {
-                    RadioButton(
-                        selected = name == "Mocho",
-                        onClick = { onItemSelected("Mocho") },
-                    )
-                    Text(text = "Mocho")
-                }
-            }
-        }
 
         @Composable
         fun MyRadioButton() {
@@ -532,6 +499,41 @@ class MainActivity : ComponentActivity() {
                 Text(text = "This is an Example", fontSize = 30.sp)
             }
 
+        }
+    }
+}
+
+@Composable
+fun MyRadioButtonList(name: String, onItemSelected: (String) -> Unit) {
+
+    Column(Modifier.fillMaxWidth()) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RadioButton(
+                selected = name == "Gocho",
+                onClick = { onItemSelected("Gocho") },
+            )
+            Text(text = "Gocho")
+        }
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RadioButton(
+                selected = name == "Bocho",
+                onClick = { onItemSelected("Bocho") },
+            )
+            Text(text = "Bocho")
+        }
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RadioButton(
+                selected = name == "Docho",
+                onClick = { onItemSelected("Docho") },
+            )
+            Text(text = "Docho")
+        }
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RadioButton(
+                selected = name == "Mocho",
+                onClick = { onItemSelected("Mocho") },
+            )
+            Text(text = "Mocho")
         }
     }
 }
