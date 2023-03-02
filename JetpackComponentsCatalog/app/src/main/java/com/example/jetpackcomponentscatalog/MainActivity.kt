@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
                     Button(onClick = { show = true }) {
                         Text(text = "Mostrar diálogo")
                     }
-                    MySimpleCustomDialog(
+                    MyCustomDialog(
                         show = show,
                         onDismiss = { show = false },
 
