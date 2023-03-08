@@ -1,6 +1,7 @@
 package com.example.jetpackcomposeinstagram
 
 import android.app.Activity
+import android.util.Patterns
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -68,15 +69,21 @@ fun SignUp() {
 @Composable
 fun Body(modifier: Modifier) {
     var email by rememberSaveable { mutableStateOf("") }
-    var pass by rememberSaveable { mutableStateOf("") }
+    var password by rememberSaveable { mutableStateOf("") }
     var isLoginEnabled by rememberSaveable { mutableStateOf(false) }
 
     Column(modifier = modifier) {
         LogoImg(Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier = Modifier.size(16.dp))
-        Email(email) { email = it }
+        Email(email) {
+            email = it
+            isLoginEnabled = enableLogin(email, password)
+        }
         Spacer(modifier = Modifier.size(4.dp))
-        Password(pass) { pass = it }
+        Password(password) {
+            password = it
+            isLoginEnabled = enableLogin(email, password)
+        }
         Spacer(modifier = Modifier.size(8.dp))
         ForgotPassword(Modifier.align(Alignment.End))
         Spacer(modifier = Modifier.size(16.dp))
@@ -152,6 +159,10 @@ fun LoginButton(loginEnabled: Boolean) {
     }
 }
 
+fun enableLogin(email: String, password: String) =
+    Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.length > 6
+
+
 @Composable
 fun ForgotPassword(modifier: Modifier) {
     Text(
@@ -190,7 +201,7 @@ fun Password(pass: String, onTextChanged: (String) -> Unit) {
                 Icon(imageVector = image, contentDescription = "show password")
             }
         },
-        visualTransformation = if(passwordVisibility) {
+        visualTransformation = if (passwordVisibility) {
             VisualTransformation.None
         } else {
             PasswordVisualTransformation()
