@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JetpackComponentsCatalogTheme {
-                SuperHeroView()
+                SuperHeroGridView()
             }
         }
     }
