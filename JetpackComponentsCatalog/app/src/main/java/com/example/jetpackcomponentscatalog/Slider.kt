@@ -35,18 +35,18 @@ fun AdvancedSlider() {
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun MyRangeSlider() {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        var currentRange by remember { mutableStateOf(0f..10f) }
-        RangeSlider(
-            values = currentRange,
-            onValueChange = { currentRange = it },
-            valueRange = 0f..40f,
-            steps = 9
-        )
-        Text(text = "Valor inferior ${currentRange.start}")
-        Text(text = "Valor superior ${currentRange.endInclusive}")
-    }
-}
+//@OptIn(ExperimentalMaterialApi::class)
+//@Composable
+//fun MyRangeSlider() {
+//    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+//        var currentRange by remember { mutableStateOf(0f..10f) }
+//        RangeSlider(
+//            values = currentRange,
+//            onValueChange = { currentRange = it },
+//            valueRange = 0f..40f,
+//            steps = 9
+//        )
+//        Text(text = "Valor inferior ${currentRange.start}")
+//        Text(text = "Valor superior ${currentRange.endInclusive}")
+//    }
+//}
