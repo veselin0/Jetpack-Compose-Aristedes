@@ -1,9 +1,7 @@
 package com.example.controlareldesplazamiento
 
 import android.widget.Toast
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.*
@@ -48,7 +46,7 @@ fun SuperHeroWithSpecialControlsView() {
             derivedStateOf { rvState.firstVisibleItemIndex > 0 }
         }
 
-        rvState.firstVisibleItemScrollOffset
+//        rvState.firstVisibleItemScrollOffset
 
 
         if (showbutton) {
@@ -64,6 +62,37 @@ fun SuperHeroWithSpecialControlsView() {
 
     }
 
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun SuperHeroStickyView() {
+    val context = LocalContext.current
+    val superhero: Map<String, List<Superhero>> = getSuperheroes().groupBy { it.publisher }
+
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+
+        superhero.forEach { (publisher, mySuperhero) ->
+
+            stickyHeader {
+                Text(
+                    text = publisher,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(Color.Green),
+                    fontSize = 16.sp,
+                    color = Color.White
+                )
+            }
+
+            items(mySuperhero) { superhero ->
+                ItemHero(superhero = superhero)
+                { Toast.makeText(context, it.superheroName, Toast.LENGTH_SHORT).show() }
+            }
+        }
+    }
 }
 
 @Composable
