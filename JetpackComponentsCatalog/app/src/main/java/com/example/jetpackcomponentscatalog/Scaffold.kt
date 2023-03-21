@@ -8,11 +8,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.material.icons.filled.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
@@ -34,7 +31,9 @@ fun ScaffoldExample() {
                 )
             }
         }
-    }, scaffoldState = scaffoldState) { contentPadding ->
+    }, scaffoldState = scaffoldState,
+        bottomBar = { MyBottomNavigation() }
+    ) { contentPadding ->
         Box(Modifier.padding(contentPadding))
     }
 }
@@ -60,4 +59,29 @@ fun MyTopAppBar(onClickIcon: (String) -> Unit) {
             }
         }
     )
+}
+
+@Composable
+fun MyBottomNavigation() {
+    var index by remember { mutableStateOf(0) }
+    BottomNavigation(backgroundColor = Color.Red, contentColor = Color.White) {
+        BottomNavigationItem(selected = index == 0, onClick = { index = 0 }, icon = {
+            Icon(
+                imageVector = Icons.Filled.Home,
+                contentDescription = "home"
+            )
+        }, label = { Text(text = "Home") })
+        BottomNavigationItem(selected = index == 1, onClick = { index = 1 }, icon = {
+            Icon(
+                imageVector = Icons.Filled.Favorite,
+                contentDescription = "favorite"
+            )
+        }, label = { Text(text = "Favorite") })
+        BottomNavigationItem(selected = index == 2, onClick = { index = 2 }, icon = {
+            Icon(
+                imageVector = Icons.Filled.Person,
+                contentDescription = "person"
+            )
+        }, label = { Text(text = "Person") })
+    }
 }
