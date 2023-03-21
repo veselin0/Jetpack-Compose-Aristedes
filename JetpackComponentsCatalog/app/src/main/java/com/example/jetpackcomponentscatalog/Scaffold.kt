@@ -32,7 +32,10 @@ fun ScaffoldExample() {
             }
         }
     }, scaffoldState = scaffoldState,
-        bottomBar = { MyBottomNavigation() }
+        bottomBar = { MyBottomNavigation() },
+        floatingActionButton = { MyFAB() },
+        floatingActionButtonPosition = FabPosition.End,
+        isFloatingActionButtonDocked = false
     ) { contentPadding ->
         Box(Modifier.padding(contentPadding))
     }
@@ -83,5 +86,12 @@ fun MyBottomNavigation() {
                 contentDescription = "person"
             )
         }, label = { Text(text = "Person") })
+    }
+}
+
+@Composable
+fun MyFAB() {
+    FloatingActionButton(onClick = { }, backgroundColor = Color.Yellow) {
+        Icon(imageVector = Icons.Filled.Add, contentDescription = "icon add")
     }
 }
