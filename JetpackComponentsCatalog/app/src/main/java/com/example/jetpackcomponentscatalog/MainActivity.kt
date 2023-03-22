@@ -54,13 +54,13 @@ class MainActivity : ComponentActivity() {
                         composable(Routes.View2.route) { Screen2(navigationController) }
                         composable(Routes.View3.route) { Screen3(navigationController) }
                         composable(
-                            "screen4/{name}",
-                            arguments = listOf(navArgument("name") { type = NavType.IntType })
+                            Routes.View4.route,
+                            arguments = listOf(navArgument("age") { type = NavType.IntType })
                         ) { backStackEntry ->
 
                             Screen4(
                                 navigationController,
-                                backStackEntry.arguments?.getInt("name") ?: 0
+                                backStackEntry.arguments?.getInt("age") ?: 0
                             )
                         }
                     }
