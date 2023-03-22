@@ -68,6 +68,22 @@ fun Screen4(navController: NavHostController, age: Int) {
             text = "Tengo $age años",
             modifier = Modifier
                 .align(Alignment.Center)
+                .clickable { navController.navigate(Routes.View5.createRoute("Gocho")) }
+        )
+    }
+}
+
+@Composable
+fun Screen5(navController: NavHostController, name: String) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Gray)
+    ) {
+        Text(
+            text = "Me llamo $name",
+            modifier = Modifier
+                .align(Alignment.Center)
 //                .clickable { navController.navigate("screen4") }
         )
     }
