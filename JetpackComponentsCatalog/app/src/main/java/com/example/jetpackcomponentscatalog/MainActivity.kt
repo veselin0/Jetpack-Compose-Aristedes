@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.jetpackcomponentscatalog.model.Routes
 import com.example.jetpackcomponentscatalog.ui.ui.CheckInfo
 import com.example.jetpackcomponentscatalog.ui.ui.JetpackComponentsCatalogTheme
 
@@ -43,10 +44,13 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val navigationController = rememberNavController()
-                    NavHost(navController = navigationController, startDestination = "screen1") {
-                        composable("screen1") { Screen1(navigationController) }
-                        composable("screen2") { Screen2(navigationController) }
-                        composable("screen3") { Screen3(navigationController) }
+                    NavHost(
+                        navController = navigationController,
+                        startDestination = Routes.View1.route
+                    ) {
+                        composable(Routes.View1.route) { Screen1(navigationController) }
+                        composable(Routes.View2.route) { Screen2(navigationController) }
+                        composable(Routes.View3.route) { Screen3(navigationController) }
                     }
                 }
             }
