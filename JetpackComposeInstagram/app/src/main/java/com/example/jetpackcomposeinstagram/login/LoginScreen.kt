@@ -71,21 +71,18 @@ fun SignUp() {
 @Composable
 fun Body(modifier: Modifier, loginViewModel: LoginViewModel) {
     val email: String by loginViewModel.email.observeAsState(initial = "")
-
-    var password by rememberSaveable { mutableStateOf("") }
-    var isLoginEnabled by rememberSaveable { mutableStateOf(false) }
+    val password: String by loginViewModel.password.observeAsState(initial = "")
+    val isLoginEnabled: Boolean by loginViewModel.isLoginEnabled.observeAsState(initial = false)
 
     Column(modifier = modifier) {
         LogoImg(Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier = Modifier.size(16.dp))
         Email(email) {
-            loginViewModel.onLoginChanged(it)
-
+            loginViewModel.onLoginChanged(email = it, password = password)
         }
         Spacer(modifier = Modifier.size(4.dp))
         Password(password) {
-            password = it
-            isLoginEnabled = enableLogin(email, password)
+            loginViewModel.onLoginChanged(email = email, password = it)
         }
         Spacer(modifier = Modifier.size(8.dp))
         ForgotPassword(Modifier.align(Alignment.End))
@@ -153,7 +150,7 @@ fun LoginButton(loginEnabled: Boolean) {
         modifier = Modifier.fillMaxWidth(),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = Color(0xff4ea8e9),
-            disabledBackgroundColor = Color(0xff78c8f9),
+            disabledBackgroundColor = Color.Yellow,
             contentColor = Color.White,
             disabledContentColor = Color.Magenta
         )
@@ -161,10 +158,6 @@ fun LoginButton(loginEnabled: Boolean) {
         Text(text = "Log In")
     }
 }
-
-fun enableLogin(email: String, password: String) =
-    Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.length > 6
-
 
 @Composable
 fun ForgotPassword(modifier: Modifier) {
