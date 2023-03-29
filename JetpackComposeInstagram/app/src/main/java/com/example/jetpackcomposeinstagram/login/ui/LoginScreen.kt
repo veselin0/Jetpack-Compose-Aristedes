@@ -1,4 +1,4 @@
-package com.example.jetpackcomposeinstagram.login.ui
+package com.example.jetpackcomposeinstagram.login
 
 import android.app.Activity
 import androidx.compose.foundation.background
