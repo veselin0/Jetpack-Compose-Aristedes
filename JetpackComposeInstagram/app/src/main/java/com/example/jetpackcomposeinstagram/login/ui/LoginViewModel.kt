@@ -29,20 +29,21 @@ class LoginViewModel:ViewModel() {
         _email.value = email
         _password.value = password
         _isLoginEnable.value = enableLogin(email, password)
+        loginUseCase("", "")
     }
 
     fun enableLogin(email: String, password: String) =
         Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.length > 6
 
-    fun onLoginSelected(){
-        viewModelScope.launch {
-            _isLoading.value = true
-            val result = loginUseCase(email.value!!, password.value!!)
-            if(result){
-                //Navegar a la siguiente pantalla
-                Log.i("aris", "result OK")
-            }
-            _isLoading.value = false
-        }
-    }
+//    fun onLoginSelected(){
+//        viewModelScope.launch {
+//            _isLoading.value = true
+//            val result = loginUseCase(email.value!!, password.value!!)
+//            if(result){
+//                //Navegar a la siguiente pantalla
+//                Log.i("aris", "result OK")
+//            }
+//            _isLoading.value = false
+//        }
+//    }
 }
