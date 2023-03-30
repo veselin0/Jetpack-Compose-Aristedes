@@ -24,7 +24,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.cursokotlin.jetpackcomposeinstagram.R
+import com.example.jetpackcomposeinstagram.R
+
 
 @Composable
 fun LoginScreen(loginViewModel: LoginViewModel) {
@@ -118,7 +119,7 @@ fun SocialLogin() {
         horizontalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.fb),
+            painter = painterResource(id = R.drawable.ic_android_black_24dp),
             contentDescription = "Social login fb",
             modifier = Modifier.size(16.dp)
         )
@@ -243,7 +244,7 @@ fun Email(email: String, onTextChanged: (String) -> Unit) {
 @Composable
 fun ImageLogo(modifier: Modifier) {
     Image(
-        painter = painterResource(id = R.drawable.insta),
+        painter = painterResource(id = R.drawable.ic_launcher_background),
         contentDescription = "logo",
         modifier = modifier
     )
