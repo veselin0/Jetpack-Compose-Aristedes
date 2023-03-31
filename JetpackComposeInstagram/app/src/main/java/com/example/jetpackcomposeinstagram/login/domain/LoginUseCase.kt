@@ -1,6 +1,6 @@
-package com.cursokotlin.jetpackcomposeinstagram.login.domain
+package com.example.jetpackcomposeinstagram.login.domain
 
-import com.cursokotlin.jetpackcomposeinstagram.login.data.LoginRepository
+import com.example.jetpackcomposeinstagram.login.data.LoginRepository
 
 class LoginUseCase {
     private val repository = LoginRepository()

@@ -1,4 +1,4 @@
-package com.cursokotlin.jetpackcomposeinstagram.login.ui
+package com.example.jetpackcomposeinstagram.login.ui
 
 import android.util.Log
 import android.util.Patterns
@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cursokotlin.jetpackcomposeinstagram.login.domain.LoginUseCase
+import com.example.jetpackcomposeinstagram.login.domain.LoginUseCase
 import kotlinx.coroutines.launch
 
 class LoginViewModel:ViewModel() {

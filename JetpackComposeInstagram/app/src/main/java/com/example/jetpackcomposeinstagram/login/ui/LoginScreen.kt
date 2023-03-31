@@ -1,4 +1,4 @@
-package com.cursokotlin.jetpackcomposeinstagram.login.ui
+package com.example.jetpackcomposeinstagram.login.ui
 
 import android.app.Activity
 import androidx.compose.foundation.Image
@@ -40,8 +40,8 @@ fun LoginScreen(loginViewModel: LoginViewModel) {
         if (isLoading) {
             Box(
                 Modifier
-                    .fillMaxSize()
-                    .align(Alignment.Center)
+                    .fillMaxSize(),
+                contentAlignment = Alignment.Center
             ) {
                 CircularProgressIndicator()
             }

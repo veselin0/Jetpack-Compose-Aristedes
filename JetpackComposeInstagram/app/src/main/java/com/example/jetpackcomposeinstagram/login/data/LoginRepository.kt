@@ -1,6 +1,6 @@
-package com.cursokotlin.jetpackcomposeinstagram.login.data
+package com.example.jetpackcomposeinstagram.login.data
 
-import com.cursokotlin.jetpackcomposeinstagram.login.data.network.LoginService
+import com.example.jetpackcomposeinstagram.login.data.network.LoginService
 
 class LoginRepository {
     private val api = LoginService()

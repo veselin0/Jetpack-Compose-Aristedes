@@ -1,4 +1,4 @@
-package com.cursokotlin.jetpackcomposeinstagram.login.data.network
+package com.example.jetpackcomposeinstagram.login.data.network
 
 import com.example.jetpackcomposeinstagram.core.network.RetrofitHelper
 import kotlinx.coroutines.Dispatchers
