@@ -1,6 +1,6 @@
 package com.example.jetpackcomposeinstagram.login.data.network
 
-import com.cursokotlin.jetpackcomposeinstagram.login.data.network.response.LoginResponse
+import com.example.jetpackcomposeinstagram.login.data.network.response.LoginResponse
 import retrofit2.Response
 import retrofit2.http.GET
 
