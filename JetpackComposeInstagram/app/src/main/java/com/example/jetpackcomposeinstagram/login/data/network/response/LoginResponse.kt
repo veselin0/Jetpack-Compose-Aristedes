@@ -1,4 +1,4 @@
-package com.example.jetpackcomposeinstagram.login.data.network.response
+package com.cursokotlin.jetpackcomposeinstagram.login.data.network.response
 
 import com.google.gson.annotations.SerializedName
 
