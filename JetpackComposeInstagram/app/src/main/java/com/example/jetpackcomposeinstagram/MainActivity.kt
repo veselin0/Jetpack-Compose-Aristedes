@@ -14,12 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpackcomposeinstagram.login.ui.LoginScreen
 import com.example.jetpackcomposeinstagram.login.ui.LoginViewModel
 import com.example.jetpackcomposeinstagram.ui.theme.JetpackComposeInstagramTheme
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private val loginViewModel: LoginViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -29,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    LoginScreen(loginViewModel)
+                    LoginScreen(LoginViewModel())
                 }
             }
         }
