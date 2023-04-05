@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase): ViewModel() {
-
+    
     private val _email = MutableLiveData<String>()
     val email : LiveData<String> = _email
 
@@ -32,7 +32,7 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
         _isLoginEnable.value = enableLogin(email, password)
     }
 
-    private fun enableLogin(email: String, password: String) =
+    fun enableLogin(email: String, password: String) =
         Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.length > 6
 
     fun onLoginSelected(){
