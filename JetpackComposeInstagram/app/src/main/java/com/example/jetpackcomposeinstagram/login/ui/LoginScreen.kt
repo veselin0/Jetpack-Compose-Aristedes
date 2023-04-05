@@ -119,12 +119,12 @@ fun SocialLogin() {
         horizontalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.fb),
+            painter = painterResource(id = R.drawable.ic_android_black_24dp),
             contentDescription = "Social login fb",
             modifier = Modifier.size(16.dp)
         )
         Text(
-            text = "Continue as Gocho",
+            text = "Continue as Aris",
             fontSize = 14.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(horizontal = 8.dp),
@@ -244,7 +244,7 @@ fun Email(email: String, onTextChanged: (String) -> Unit) {
 @Composable
 fun ImageLogo(modifier: Modifier) {
     Image(
-        painter = painterResource(id = R.drawable.insta),
+        painter = painterResource(id = R.drawable.ic_launcher_background),
         contentDescription = "logo",
         modifier = modifier
     )
