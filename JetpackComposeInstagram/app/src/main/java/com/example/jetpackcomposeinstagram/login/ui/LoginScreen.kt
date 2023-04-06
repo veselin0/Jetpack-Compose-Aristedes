@@ -119,7 +119,7 @@ fun SocialLogin() {
         horizontalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_android_black_24dp),
+            painter = painterResource(id = R.drawable.fb),
             contentDescription = "Social login fb",
             modifier = Modifier.size(16.dp)
         )
@@ -244,7 +244,7 @@ fun Email(email: String, onTextChanged: (String) -> Unit) {
 @Composable
 fun ImageLogo(modifier: Modifier) {
     Image(
-        painter = painterResource(id = R.drawable.ic_launcher_background),
+        painter = painterResource(id = R.drawable.insta),
         contentDescription = "logo",
         modifier = modifier
     )

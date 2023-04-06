@@ -9,23 +9,23 @@ import androidx.lifecycle.viewModelScope
 import com.example.jetpackcomposeinstagram.login.domain.LoginUseCase
 import kotlinx.coroutines.launch
 
-class LoginViewModel:ViewModel() {
+class LoginViewModel : ViewModel() {
 
     val loginUseCase = LoginUseCase()
 
     private val _email = MutableLiveData<String>()
-    val email : LiveData<String> = _email
+    val email: LiveData<String> = _email
 
     private val _password = MutableLiveData<String>()
-    val password : LiveData<String> = _password
+    val password: LiveData<String> = _password
 
     private val _isLoginEnable = MutableLiveData<Boolean>()
-    val isLoginEnable:LiveData<Boolean> = _isLoginEnable
+    val isLoginEnable: LiveData<Boolean> = _isLoginEnable
 
     private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading:LiveData<Boolean> = _isLoading
+    val isLoading: LiveData<Boolean> = _isLoading
 
-    fun onLoginChanged(email:String, password:String){
+    fun onLoginChanged(email: String, password: String) {
         _email.value = email
         _password.value = password
         _isLoginEnable.value = enableLogin(email, password)
@@ -34,13 +34,13 @@ class LoginViewModel:ViewModel() {
     fun enableLogin(email: String, password: String) =
         Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.length > 6
 
-    fun onLoginSelected(){
+    fun onLoginSelected() {
         viewModelScope.launch {
             _isLoading.value = true
             val result = loginUseCase(email.value!!, password.value!!)
-            if(result){
+            if (result) {
                 //Navegar a la siguiente pantalla
-                Log.i("aris", "result OK")
+                Log.i("Gocho", "result OK")
             }
             _isLoading.value = false
         }
