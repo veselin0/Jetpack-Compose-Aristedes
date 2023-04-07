@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase) : ViewModel() {
-    
+
 
     private val _email = MutableLiveData<String>()
     val email: LiveData<String> = _email
