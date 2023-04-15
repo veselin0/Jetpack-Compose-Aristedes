@@ -124,7 +124,7 @@ fun SocialLogin() {
             modifier = Modifier.size(16.dp)
         )
         Text(
-            text = "Continue as Gocho",
+            text = "Continue as Aris",
             fontSize = 14.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(horizontal = 8.dp),

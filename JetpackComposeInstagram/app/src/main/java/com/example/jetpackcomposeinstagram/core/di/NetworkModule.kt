@@ -1,4 +1,4 @@
-package com.example.jetpackcomposeinstagram.core.network.di
+package com.example.jetpackcomposeinstagram.core.di
 
 import com.example.jetpackcomposeinstagram.login.data.network.LoginClient
 import dagger.Module
