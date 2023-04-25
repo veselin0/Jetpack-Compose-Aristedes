@@ -10,10 +10,12 @@ import com.example.mytodoapp.addtasks.domain.GetTasksUseCase
 import com.example.mytodoapp.addtasks.ui.TasksUIState.Success
 import com.example.mytodoapp.addtasks.ui.TasksUIState.Error
 import com.example.mytodoapp.addtasks.ui.model.TaskModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class TasksViewModel @Inject constructor(
     private val addTaskUseCase: AddTaskUseCase,
     getTasksUseCase: GetTasksUseCase
