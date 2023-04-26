@@ -44,6 +44,25 @@ class GochoComponentTest {
             .performTextClearance() //borrar el texto de un TextField
         composeTestRule.onNodeWithText("gocho").performTextInput("Gocho, Bocho, Docho")
         composeTestRule.onNodeWithText("gocho").performTextReplacement("Kocho, Mocho, Kucho")
-        composeTestRule.onNodeWithText("gocho")
+
+
+        //    ASSERTIONS:
+        composeTestRule.onNodeWithText("gocho").assertExists()
+        composeTestRule.onNodeWithText("gocho").assertDoesNotExist()
+        composeTestRule.onNodeWithText("gocho").assertContentDescriptionEquals("gocho kochev")
+        composeTestRule.onNodeWithText("gocho").assertContentDescriptionContains("gocho")
+        composeTestRule.onNodeWithText("gocho").assertIsDisplayed()
+        composeTestRule.onNodeWithText("gocho").assertIsNotDisplayed()
+        composeTestRule.onNodeWithText("gocho").assertIsEnabled()
+        composeTestRule.onNodeWithText("gocho").assertIsNotEnabled()
+        composeTestRule.onNodeWithText("gocho").assertIsSelected()
+        composeTestRule.onNodeWithText("gocho").assertIsNotSelected()
+        composeTestRule.onNodeWithText("gocho").assertIsFocused()
+        composeTestRule.onNodeWithText("gocho").assertIsNotFocused()
+        composeTestRule.onNodeWithText("gocho").assertIsOn() //checked
+        composeTestRule.onNodeWithText("gocho").assertIsOff()//unchecked
+        composeTestRule.onNodeWithText("gocho").assertTextEquals("")
+        composeTestRule.onNodeWithText("gocho").assertTextContains("boch")
     }
+
 }
