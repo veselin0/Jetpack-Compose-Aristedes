@@ -65,4 +65,25 @@ class GochoComponentTest {
         composeTestRule.onNodeWithText("gocho").assertTextContains("boch")
     }
 
+    @Test
+    fun verifyComponentStartsWithGocho() {
+        composeTestRule.setContent {
+            GochoComponent()
+        }
+
+        composeTestRule.onNodeWithText("gocho", ignoreCase = true).assertExists()
+        composeTestRule.onNodeWithTag("textFieldName").assertTextContains("Gocho")
+    }
+
+    @Test
+    fun whenNameIsAdded_thenVerifyIfTextContainsGreeting() {
+        composeTestRule.setContent {
+            GochoComponent()
+        }
+
+        composeTestRule.onNodeWithTag("textFieldName").performTextClearance()
+        composeTestRule.onNodeWithTag("textFieldName").performTextInput("Pepe")
+//        composeTestRule.onNodeWithTag("textFieldName").performTextReplacement("Pepe")
+        composeTestRule.onNodeWithTag("textGreeting").assertTextEquals("Te llamas Pepe")
+    }
 }
